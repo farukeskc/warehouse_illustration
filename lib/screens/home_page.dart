@@ -25,8 +25,9 @@ class _HomePageState extends State<HomePage> {
             return InteractiveViewer(
               maxScale: 10,
               child: Scaffold(
+                  backgroundColor: const Color(0xFFefefef),
                   appBar: AppBar(
-                    title: const Text('Warehouse Illustration',
+                    title: const Text('Basbuğ Warehouse Illustration',
                         style: TextStyle(color: Colors.white)),
                     centerTitle: true,
                     backgroundColor: const Color(0xFFBD2640),
@@ -40,22 +41,23 @@ class _HomePageState extends State<HomePage> {
                           });
                         },
                         fillColor: Colors.white,
+                        color: Colors.white,
                         children: const [
                           Padding(
                             padding: EdgeInsets.all(8.0),
-                            child: Text('S-Shape'),
+                            child: Text('S-Shape', style: TextStyle(fontSize: 16)),
                           ),
                           Padding(
                             padding: EdgeInsets.all(8.0),
-                            child: Text('Largest Gap'),
+                            child: Text('Largest Gap', style: TextStyle(fontSize: 16)),
                           ),
                           Padding(
                             padding: EdgeInsets.all(8.0),
-                            child: Text('Midpoint'),
+                            child: Text('Midpoint', style: TextStyle(fontSize: 16)),
                           ),
                           Padding(
                             padding: EdgeInsets.all(8.0),
-                            child: Text('Genetic'),
+                            child: Text('Genetic', style: TextStyle(fontSize: 16)),
                           ),
                         ],
                       ),
@@ -68,8 +70,14 @@ class _HomePageState extends State<HomePage> {
                               child: Text(pickList.id),
                             )
                         ],
-                        hint: const Text('Select Picklist'),
+                        hint: const Text('Select Picklist',
+                            style: TextStyle(color: Colors.white)),
                         value: selectedPickList,
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 20,
+                        ),
+                        dropdownColor: const Color(0xFFBD2640),
                         onChanged: (PickList? value) {
                           setState(() {
                             selectedPickList = value;
@@ -89,21 +97,33 @@ class _HomePageState extends State<HomePage> {
                             ? Row(
                                 children: [
                                   Text(
-                                    "Distance: ${getSelectedDistance(selectedPickList!).toStringAsFixed(1)}",
+                                    "Distance: ${getSelectedDistance(selectedPickList!).toStringAsFixed(1)} m",
                                     style: const TextStyle(
-                                      fontSize:15,
+                                      fontSize: 20,
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),
-                                  const SizedBox(width: 5),
+                                  const SizedBox(width: 15),
                                   const Spacer(),
-                                  (MediaQuery.of(context).size.width < 1450)?const SizedBox():Text(
-                                    getSelectedPathString(selectedPickList!),
+                                  Text(
+                                    "Number of Items: ${getSelectedItems(selectedPickList!).length}",
                                     style: const TextStyle(
-                                      fontSize: 15,
+                                      fontSize: 20,
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),
+                                  const Spacer(),
+                                  const SizedBox(width: 15),
+                                  (MediaQuery.of(context).size.width < 1450)
+                                      ? const SizedBox()
+                                      : Text(
+                                          getSelectedPathString(
+                                              selectedPickList!),
+                                          style: const TextStyle(
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
                                 ],
                               )
                             : const SizedBox(),
