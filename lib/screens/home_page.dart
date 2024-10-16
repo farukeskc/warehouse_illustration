@@ -27,7 +27,7 @@ class _HomePageState extends State<HomePage> {
               child: Scaffold(
                   backgroundColor: const Color(0xFFefefef),
                   appBar: AppBar(
-                    title: const Text('Warehouse Illustration',
+                    title: const Text('Basbuğ Warehouse Illustration',
                         style: TextStyle(color: Colors.white)),
                     centerTitle: true,
                     backgroundColor: const Color(0xFFBD2640),
